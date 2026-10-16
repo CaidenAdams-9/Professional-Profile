@@ -1,0 +1,296 @@
+
+:root {
+  --navy: #244d70;
+  --blue: #3476a5;
+  --light-blue: #eaf2f8;
+  --text: #283442;
+  --muted: #657382;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #e9eef3;
+  color: var(--text);
+  line-height: 1.6;
+  padding: 30px 15px;
+}
+
+.cv {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--white);
+  box-shadow: 0 8px 30px rgba(24, 50, 75, 0.12);
+  overflow: hidden;
+}
+
+/* Header */
+.header {
+  background: var(--navy);
+  color: var(--white);
+  padding: 42px 48px;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.profile-picture {
+  width: 145px;
+  height: 145px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 5px solid rgba(255, 255, 255, 0.85);
+  object-fit: cover;
+  background: #dce7ef;
+}
+
+.header-content h1 {
+  font-size: 34px;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.profession {
+  font-size: 15px;
+  color: #dce9f4;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.header-line {
+  width: 75px;
+  height: 4px;
+  background: #8ec8ed;
+  margin-top: 18px;
+}
+
+/* Main layout */
+.content {
+  display: grid;
+  grid-template-columns: 290px minmax(0, 1fr);
+}
+
+.sidebar {
+  background: #f1f5f8;
+  padding: 35px 28px;
+  min-width: 0;
+}
+
+.main {
+  padding: 35px 40px;
+  min-width: 0;
+}
+
+.section {
+  margin-bottom: 32px;
+  break-inside: avoid;
+}
+
+.section h2 {
+  color: var(--navy);
+  font-size: 19px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-bottom: 9px;
+  margin-bottom: 17px;
+  border-bottom: 2px solid #c8dbe9;
+}
+
+.sidebar .section h2 {
+  font-size: 16px;
+}
+
+.contact-item {
+  margin-bottom: 19px;
+  overflow-wrap: anywhere;
+}
+
+.contact-item h3 {
+  font-size: 12px;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 3px;
+}
+
+.contact-item p,
+.contact-item a {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Education */
+.education-item {
+  margin-bottom: 23px;
+}
+
+.education-item h3 {
+  color: var(--navy);
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.education-item .date {
+  display: inline-block;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.education-item p {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* Lists */
+.subject-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px 16px;
+  margin-top: 14px;
+}
+
+.subject-list li {
+  position: relative;
+  padding-left: 17px;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.subject-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+/* Profile and reference */
+.about-text {
+  font-size: 15px;
+  line-height: 1.9;
+  color: #4b5967;
+}
+
+.reference-name {
+  color: var(--navy);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.reference-details {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.footer {
+  background: #f1f5f8;
+  color: var(--muted);
+  text-align: center;
+  padding: 15px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+/* Mobile layout */
+@media (max-width: 650px) {
+  body {
+    padding: 0;
+  }
+
+  .header {
+    padding: 30px 22px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-content h1 {
+    font-size: 28px;
+  }
+
+  .header-line {
+    margin: 16px auto 0;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar,
+  .main {
+    padding: 28px 24px;
+  }
+
+  .subject-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* A4 print and PDF */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  body {
+    padding: 0;
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .cv {
+    width: 210mm;
+    max-width: none;
+    min-height: 297mm;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .header {
+    padding: 30px 38px;
+  }
+
+  .profile-picture {
+    width: 125px;
+    height: 125px;
+  }
+
+  .content {
+    grid-template-columns: 70mm minmax(0, 1fr);
+  }
+
+  .sidebar {
+    padding: 28px 23px;
+  }
+
+  .main {
+    padding: 28px 30px;
+  }
+
+  a {
+    color: inherit;
+  }
+}
